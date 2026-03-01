@@ -21,5 +21,5 @@ private:
 	void registerScenes();
 
 	// シーンマネージャー
-	SceneManager<SceneSettings::State> m_sceneManager;
+	SceneSettings::Manager m_sceneManager;
 };

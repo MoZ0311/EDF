@@ -20,5 +20,5 @@ namespace SceneSettings
 	inline constexpr SecondsF TransitionDuration{ 0.5f };
 
 	// SceneManager<State>の別名定義
-	using SceneApp = SceneManager<State>;
+	using Manager = SceneManager<State>;
 }
