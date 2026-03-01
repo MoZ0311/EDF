@@ -1,19 +1,36 @@
 ﻿// Application class
 
 # include "Application.hpp"
+# include "../scene/TitleScene.hpp"
 
 using namespace SceneSettings;
 
 Application::Application()
 	: m_sceneManager{}
 {
-	// ウィンドウサイズをFHDに変更し、フルスクリーン化
-	Window::Resize(ScreenSize);
-	Window::SetFullscreen(true);
+	
+}
 
-	// 全てのシーンを登録し、最初に読み込むシーンを設定
+bool Application::initialize()
+{
+	// ウィンドウの名前を変更
+	Window::SetTitle(GameTitle);
+
+	// ウィンドウサイズをFHDに変更
+	if (!Window::Resize(ScreenSize))
+	{
+		return false;
+	}
+
+	// 全てのシーンを登録し、最初のシーンを初期化
 	registerScenes();
-	// m_sceneManager.init(State::Title, TransitionDuration);
+	if (!m_sceneManager.init(State::Title, TransitionDuration))
+	{
+		return false;
+	}
+
+	// 全ての初期化処理を終え、true(正常に初期化完了)を返す
+	return true;
 }
 
 bool Application::run()
@@ -24,5 +41,5 @@ bool Application::run()
 
 void Application::registerScenes()
 {
-	Print << U"Register Scenes!";
+	m_sceneManager.add<TitleScene>(State::Title);
 }

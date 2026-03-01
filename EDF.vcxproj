@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App\src\core\Application.cpp" />
+    <ClCompile Include="App\src\scene\TitleScene.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -328,6 +329,7 @@
   <ItemGroup>
     <ClInclude Include="App\src\core\Application.hpp" />
     <ClInclude Include="App\src\core\Config.hpp" />
+    <ClInclude Include="App\src\scene\TitleScene.hpp" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
