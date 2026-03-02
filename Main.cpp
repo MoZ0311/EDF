@@ -13,6 +13,8 @@ void Main()
 
 	while (System::Update())
 	{
+		ClearPrint();
+
 		// ゲームループ中に更新に失敗した時
 		if (!app.run())
 		{

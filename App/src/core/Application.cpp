@@ -13,14 +13,9 @@ Application::Application()
 
 bool Application::initialize()
 {
-	// ウィンドウの名前を変更
+	// ウィンドウの各種設定
 	Window::SetTitle(GameTitle);
-
-	// ウィンドウサイズをFHDに変更
-	if (!Window::Resize(ScreenSize))
-	{
-		return false;
-	}
+	Window::SetFullscreen(true);
 
 	// 全てのシーンを登録し、最初のシーンを初期化
 	registerScenes();
@@ -35,6 +30,8 @@ bool Application::initialize()
 
 bool Application::run()
 {
+	Print << Scene::Size();
+
 	// シーン内の更新、描画が成功したかを返す
 	return m_sceneManager.update();
 }
