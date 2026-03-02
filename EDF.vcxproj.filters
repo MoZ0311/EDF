@@ -162,6 +162,9 @@
     <ClCompile Include="App\src\scene\TitleScene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="App\src\scene\GameScene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\icon.ico">
@@ -834,6 +837,9 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="App\src\scene\TitleScene.hpp">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="App\src\scene\GameScene.hpp">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>

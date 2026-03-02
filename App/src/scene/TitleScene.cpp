@@ -3,6 +3,7 @@
 # include "TitleScene.hpp"
 # include "../core/Config.hpp"
 
+using namespace SceneSettings;
 using namespace UISettings;
 
 TitleScene::TitleScene(const InitData& init)
@@ -34,11 +35,12 @@ void TitleScene::update()
 		m_currentSelectingButton = SelectingButton::Exit;
 		m_isUsingPad = true;
 	}
+	*/
 
+	// ゲームパッドを使用しているかで分岐
 	if (m_isUsingPad)
 	{
 		Cursor::RequestStyle(CursorStyle::Hidden);
-
 		if (!Cursor::DeltaRaw().isZero())
 		{
 			m_isUsingPad = false;
@@ -52,14 +54,7 @@ void TitleScene::update()
 		if (onStart || onExit)
 		{
 			Cursor::RequestStyle(CursorStyle::Hand);
-			if (onStart)
-			{
-				m_currentSelectingButton = SelectingButton::Start;
-			}
-			else if (onExit)
-			{
-				m_currentSelectingButton = SelectingButton::Exit;
-			}
+			m_currentSelectingButton = onStart ? SelectingButton::Start : SelectingButton::Exit;
 		}
 		else
 		{
@@ -70,55 +65,12 @@ void TitleScene::update()
 	m_startTransition.update(m_currentSelectingButton == SelectingButton::Start);
 	m_exitTransition.update(m_currentSelectingButton == SelectingButton::Exit);
 
-	if (PlayerInput::KeyConfirm())
-	{
-		switch (m_currentSelectingButton)
-		{
-		case SelectingButton::Start:
-			AudioAsset(Assets::Select).playOneShot();
-			changeScene(State::Field, ChangeDuration);
-			break;
-
-		case SelectingButton::Exit:
-			System::Exit();
-			break;
-
-		default:
-			break;
-		}
-	}
-	*/
-
-	const bool onStart{ m_startButton.mouseOver() };
-	const bool onExit{ m_exitButton.mouseOver() };
-
-	if (onStart || onExit)
-	{
-		Cursor::RequestStyle(CursorStyle::Hand);
-		if (onStart)
-		{
-			m_currentSelectingButton = SelectingButton::Start;
-		}
-		else if (onExit)
-		{
-			m_currentSelectingButton = SelectingButton::Exit;
-		}
-	}
-	else
-	{
-		m_currentSelectingButton = SelectingButton::None;
-	}
-
-	m_startTransition.update(m_currentSelectingButton == SelectingButton::Start);
-	m_exitTransition.update(m_currentSelectingButton == SelectingButton::Exit);
-
 	if (MouseL.down())
 	{
 		switch (m_currentSelectingButton)
 		{
 		case SelectingButton::Start:
-			// changeScene(State::Field, ChangeDuration);
-			Print << U"Clicked Start-button";
+			changeScene(State::Game, TransitionDuration);
 			break;
 
 		case SelectingButton::Exit:
@@ -129,6 +81,8 @@ void TitleScene::update()
 			break;
 		}
 	}
+
+	Print << FromEnum(m_currentSelectingButton);
 }
 
 void TitleScene::draw() const

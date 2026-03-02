@@ -2,6 +2,7 @@
 
 # include "Application.hpp"
 # include "../scene/TitleScene.hpp"
+# include "../scene/GameScene.hpp"
 
 using namespace SceneSettings;
 
@@ -39,4 +40,5 @@ bool Application::run()
 void Application::registerScenes()
 {
 	m_sceneManager.add<TitleScene>(State::Title);
+	m_sceneManager.add<GameScene>(State::Game);
 }
