@@ -2,6 +2,7 @@
 
 #pragma once
 
+# include "../player/PlayerInput.hpp"
 # include "../core/Config.hpp"
 
 class TitleScene : public SceneSettings::Manager::Scene
@@ -18,6 +19,9 @@ public:
 	void draw() const override;
 
 private:
+
+	// 入力管理クラス
+	const PlayerInput m_playerInput;
 
 	// ボタンの選択状態の列挙型定義
 	enum class SelectingButton

@@ -148,6 +148,12 @@
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{f359d661-b91a-490c-a3ad-13fcc468e2ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Player">
+      <UniqueIdentifier>{465a607b-6ba6-45c7-ab94-69fc0cb6cb49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{714268d5-ad37-4159-9813-767d8634223f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -164,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="App\src\scene\GameScene.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="App\src\player\PlayerInput.cpp">
+      <Filter>Source Files\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -841,6 +850,9 @@
     </ClInclude>
     <ClInclude Include="App\src\scene\GameScene.hpp">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="App\src\player\PlayerInput.hpp">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
