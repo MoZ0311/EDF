@@ -1,15 +1,15 @@
 ﻿// TitleScene class
 
 # include "TitleScene.hpp"
-# include "../core/Config.hpp"
 
 using namespace SceneSettings;
 using namespace UISettings;
 
 TitleScene::TitleScene(const InitData& init)
 	: IScene{ init }
+	, m_playerInput{}
 	, m_startButton{
-		Arg::center = TitleButtonPoint,
+		Arg::center = Scene::Center(),
 		ButtonSize,
 		ButtonRoundness
 	}
@@ -24,18 +24,17 @@ TitleScene::TitleScene(const InitData& init)
 
 void TitleScene::update()
 {
-	/*
-	if (PlayerInput::KeyUpper())
+	// キー入力での項目選択を最優先
+	if (m_playerInput.KeyUpper())
 	{
 		m_currentSelectingButton = SelectingButton::Start;
 		m_isUsingPad = true;
 	}
-	else if (PlayerInput::KeyLower())
+	else if (m_playerInput.KeyLower())
 	{
 		m_currentSelectingButton = SelectingButton::Exit;
 		m_isUsingPad = true;
 	}
-	*/
 
 	// ゲームパッドを使用しているかで分岐
 	if (m_isUsingPad)
@@ -65,7 +64,7 @@ void TitleScene::update()
 	m_startTransition.update(m_currentSelectingButton == SelectingButton::Start);
 	m_exitTransition.update(m_currentSelectingButton == SelectingButton::Exit);
 
-	if (MouseL.down())
+	if (m_playerInput.KeyConfirm())
 	{
 		switch (m_currentSelectingButton)
 		{

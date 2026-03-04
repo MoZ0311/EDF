@@ -45,10 +45,4 @@ namespace UISettings
 
 	// ボタンの文字の色
 	inline constexpr ColorF ButtonTextCollor{ 0.3 };
-
-	// タイトル画面でのボタンの位置
-	inline constexpr Point TitleButtonPoint{ 980, 500 };
-
-	// ゲームオーバー画面でのボタンの位置
-	inline constexpr Point OverButtonPoint{ 640, 520 };
 }
