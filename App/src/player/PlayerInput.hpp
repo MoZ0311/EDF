@@ -1,4 +1,6 @@
-﻿# pragma once
+﻿// PlayerInput class
+
+# pragma once
 
 class PlayerInput
 {
