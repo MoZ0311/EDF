@@ -18,4 +18,12 @@ public:
 	void draw() const override;
 
 private:
+
+	const Texture uvChecker{ U"example/texture/uv.png", TextureDesc::MippedSRGB };
+
+	// マルチサンプリング対応のレンダーテクスチャ
+	const MSRenderTexture m_renderTexture;
+
+	// 3D空間用のカメラ
+	BasicCamera3D m_camera;
 };
