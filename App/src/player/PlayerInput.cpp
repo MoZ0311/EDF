@@ -38,17 +38,17 @@ Vec2 PlayerInput::GetCameraAxis() const
 	if (m_controller.isConnected())
 	{
 		// 右スティックの入力値を使用
-		const Vec2 inputVector{ -m_controller.rightThumbX, m_controller.rightThumbY };
+		const Vec2 inputVector{ m_controller.rightThumbX, m_controller.rightThumbY };
 
 		// 値が0でなければ、return
 		if (!inputVector.isZero())
 		{
-			// return inputVector * Config::Camera::RotateSpeed;
+			return inputVector;
 		}
 	}
 
 	// カーソルの移動量を取得
-	return -Cursor::DeltaF();
+	return Cursor::DeltaF();
 }
 
 // 決定ボタンが押されたか

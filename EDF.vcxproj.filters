@@ -174,7 +174,7 @@
     <ClCompile Include="App\src\player\PlayerInput.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="App\src\player\PlayerCamera.cpp">
+    <ClCompile Include="App\src\player\CameraController.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
   </ItemGroup>
@@ -857,7 +857,7 @@
     <ClInclude Include="App\src\player\PlayerInput.hpp">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="App\src\player\PlayerCamera.hpp">
+    <ClInclude Include="App\src\player\CameraController.hpp">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>

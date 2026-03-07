@@ -7,12 +7,17 @@ GameScene::GameScene(const InitData& init)
 	: IScene{ init }
 	, m_renderTexture{ Scene::Size(), TextureFormat::R8G8B8A8_Unorm_SRGB, HasDepth::Yes }
 	, m_camera{ m_renderTexture.size(), 60_deg, Vec3{ 10, 16, 32 } }
+	, m_cameraController{ m_camera }
+	, m_skyRenderer{}
 {
 
 }
 
 void GameScene::update()
 {
+	// カメラ操作の更新
+	m_cameraController.update();
+
 	// debug
 	if (KeyEnter.down())
 	{
@@ -23,17 +28,18 @@ void GameScene::update()
 void GameScene::draw() const
 {
 	Cursor::RequestStyle(CursorStyle::Hidden);
+	Cursor::SetPos(Scene::Center());
 
 	// 3Dシーンにカメラを設定
 	Graphics3D::SetCameraTransform(m_camera);
 
 	// 3D描画
 	{
-		const ScopedRenderTarget3D target{ m_renderTexture.clear(Palette::Firebrick.removeSRGBCurve()) };
+		const ScopedRenderTarget3D target{ m_renderTexture.clear(ColorF{ 0.0 })};
 		const ScopedRenderStates3D blend{ BlendState::OpaqueAlphaToCoverage };
 
 		// 床を描画
-		Plane{ 64 }.draw(uvChecker);
+		Plane{ 2000 }.draw(uvChecker);
 
 		// ボックスを描画
 		Box{ -8,2,0,4 }.draw(ColorF{ 0.8, 0.6, 0.4 }.removeSRGBCurve());
@@ -44,6 +50,8 @@ void GameScene::draw() const
 		// 円柱を描画
 		Cylinder{ 8, 2, 0, 2, 4 }.draw(ColorF{ 0.6, 0.4, 0.8 }.removeSRGBCurve());
 
+		// スカイボックスの描画
+		m_skyRenderer.draw();
 	}
 
 	// 2Dに転送

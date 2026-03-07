@@ -26,6 +26,11 @@ namespace SceneSettings
 	using Manager = SceneManager<State>;
 }
 
+namespace CameraSettings
+{
+	inline constexpr float PitchLimit{ static_cast<float>(85_deg) };
+}
+
 namespace UISettings
 {
 	// ボタンのサイズ
